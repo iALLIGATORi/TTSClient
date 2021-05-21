@@ -8,7 +8,7 @@ namespace CloudTTS
 {
     internal class SynthesisPackage
     {
-        public static async Task Synthesize(Task<string> sessionId)
+        public static async Task Synthesize(Task<string> sessionId, Task<Voices> voiceRequest)
         {
             using (var apiClient = new HttpClient())
             {
@@ -18,7 +18,7 @@ namespace CloudTTS
                 var synthesizeText = new SynthesizeText(value);
                 try
                 {
-                    var synthesizeContent = new SynthesizeRequest("Julia", synthesizeText).ToJsonContent();
+                    var synthesizeContent = new SynthesizeRequest(voiceRequest.Result.Name, synthesizeText).ToJsonContent();
 
                     var synthesizeResponse = await apiClient.PostAsync("https://cp.speechpro.com/vktts/rest/v1/synthesize",
                         synthesizeContent);
@@ -30,7 +30,7 @@ namespace CloudTTS
                     }
 
                     var sound = Convert.FromBase64String(base64.Data);
-                    File.WriteAllBytes(@"C:\tts.wav", sound);
+                    File.WriteAllBytes(@"C:\WSTTS\tts.wav", sound);
 
                     Console.WriteLine("Файл tts.wav размером " + sound.Length +
                                       " байт записан в корневую папку на диск С");

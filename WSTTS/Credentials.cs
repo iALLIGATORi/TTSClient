@@ -7,9 +7,9 @@ namespace CloudTTS
 {
     internal class Credentials
     {
-        public Credentials(int domain_id, string username, string password)
+        public Credentials(int domainId, string username, string password)
         {
-            DomainId = domain_id;
+            DomainId = domainId;
             UserName = username;
             Password = password;
         }

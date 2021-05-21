@@ -9,7 +9,7 @@ using static System.Int32;
 
 namespace CloudTTS
 {
-    internal class Languages
+    public class Languages
     {
         [JsonPropertyName("id")] 
         public string Id { get; set; }
@@ -24,14 +24,13 @@ namespace CloudTTS
                 apiClient.DefaultRequestHeaders.Add("X-Session-Id", sessionId.Result);
                 Console.WriteLine("Список доступных языков");
                 var langsString = await apiClient.GetStringAsync("https://cloud.speechpro.com/vktts/rest/v1/languages");
-
                 var langs = JsonSerializer.Deserialize<Languages[]>(langsString).OrderBy(lang => lang.Id);
                 foreach (var lang in langs)
                 {
                     Console.WriteLine(lang.Id + " - " + lang.Name);
                 }
 
-                Console.WriteLine("Выберите номер языка");
+                Console.WriteLine("\nВыберите язык");
                 while (true)
                 {
                     var key = Console.ReadLine();

@@ -12,15 +12,15 @@ namespace CloudTTS
     class WebSocketRequest
     {
 
-        public WebSocketRequest(string voicename, WebSocketTextParam text)
+        public WebSocketRequest(Task<Voices> voicename, WebSocketTextParam text)
         {
             VoiceName = voicename;
             Text = text;
-            Audio = "audio/wav";
+            Audio = "audio/s16le";
         }
 
         [JsonPropertyName("voice_name")]
-        public string VoiceName { get; set; }
+        public Task<Voices> VoiceName { get; set; }
 
         [JsonPropertyName("text")]
         public WebSocketTextParam Text { get; set; }

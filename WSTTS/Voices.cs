@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -8,7 +9,7 @@ using static System.Int32;
 
 namespace CloudTTS
 {
-    internal class Voices
+    public class Voices
     {
         [JsonPropertyName("id")] 
         public string Id { get; set; }
@@ -24,16 +25,17 @@ namespace CloudTTS
             using (var apiClient = new HttpClient())
             {
                 apiClient.DefaultRequestHeaders.Add("X-Session-Id", sessionId.Result);
-                Console.WriteLine("Список доступных голосов\n");
+                Console.WriteLine("Список доступных голосов для синтеза");
                 var voicesString = await apiClient.GetStringAsync(
                     "https://cloud.speechpro.com/vktts/rest/v1/languages/" + language.Result.Name + "/voices");
-                var voices = JsonSerializer.Deserialize<Voices[]>(voicesString).OrderBy(lang => lang.Id);
+                var voices = JsonSerializer.Deserialize<Voices[]>(voicesString).OrderBy(voice => voice.Name);
                 foreach (var voice in voices)
                 {
                     Console.WriteLine(voice.Id + " - " + voice.Name);
                 }
 
-                Console.WriteLine("Выберите номер голоса");
+
+                Console.WriteLine("\nВыберите голос");
                 while (true)
                 {
                     var key = Console.ReadLine();
