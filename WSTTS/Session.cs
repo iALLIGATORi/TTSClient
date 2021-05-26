@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -9,8 +8,7 @@ namespace CloudTTS
 {
     internal class Session
     {
-        [JsonPropertyName("is_active")]
-        public bool Active { get; set; }
+        [JsonPropertyName("is_active")] public bool Active { get; set; }
 
         public static async Task<string> Create(Credentials credentials)
         {
@@ -23,13 +21,12 @@ namespace CloudTTS
                         credentialsContent);
                     var sessionIdString = await createSession.Content.ReadAsStringAsync();
                     var sessionId = JsonSerializer.Deserialize<Auth>(sessionIdString);
-                    if (sessionId.SessionId == null)
+                    if (sessionId?.SessionId == null)
                     {
                         throw new ArgumentNullException();
                     }
 
                     return sessionId.SessionId;
-                    
                 }
                 catch (Exception e)
                 {
@@ -50,9 +47,9 @@ namespace CloudTTS
                 {
                     throw new ArgumentNullException();
                 }
+
                 return status.Active;
             }
-
         }
     }
 }

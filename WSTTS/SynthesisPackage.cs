@@ -18,9 +18,11 @@ namespace CloudTTS
                 var synthesizeText = new SynthesizeText(value);
                 try
                 {
-                    var synthesizeContent = new SynthesizeRequest(voiceRequest.Result.Name, synthesizeText).ToJsonContent();
+                    var synthesizeContent =
+                        new PackageRequest(voiceRequest.Result.Name, synthesizeText).ToJsonContent();
 
-                    var synthesizeResponse = await apiClient.PostAsync("https://cp.speechpro.com/vktts/rest/v1/synthesize",
+                    var synthesizeResponse = await apiClient.PostAsync(
+                        "https://cp.speechpro.com/vktts/rest/v1/synthesize",
                         synthesizeContent);
                     var base64String = await synthesizeResponse.Content.ReadAsStringAsync();
                     var base64 = JsonSerializer.Deserialize<Sound>(base64String);
@@ -30,10 +32,19 @@ namespace CloudTTS
                     }
 
                     var sound = Convert.FromBase64String(base64.Data);
-                    File.WriteAllBytes(@"C:\WSTTS\tts.wav", sound);
 
-                    Console.WriteLine("Файл tts.wav размером " + sound.Length +
-                                      " байт записан в корневую папку на диск С");
+
+                    var dir = new DirectoryInfo(@"C:\Cloud\");
+                    if (!dir.Exists)
+                    {
+                        dir.Create();
+                    }
+                    var wavName = "packadge.wav";
+                    var pathFile = dir + wavName;
+                    File.WriteAllBytes(pathFile, sound);
+                    Console.WriteLine("Файл " + wavName + " размером " + sound.Length +
+                                      " байт сохранен в папке " + dir);
+
                 }
                 catch (Exception e)
                 {

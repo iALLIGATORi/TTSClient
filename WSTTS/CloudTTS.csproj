@@ -162,7 +162,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sound.cs" />
     <Compile Include="SynthesisPackage.cs" />
-    <Compile Include="SynthesizeRequest.cs" />
+    <Compile Include="PackageRequest.cs" />
     <Compile Include="SynthesizeText.cs" />
     <Compile Include="SynthesisWebsocket.cs" />
     <Compile Include="WebsocketUrl.cs" />

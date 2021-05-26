@@ -14,14 +14,11 @@ namespace CloudTTS
             Password = password;
         }
 
-        [JsonPropertyName("domain_id")] 
-        public int DomainId { get; set; }
+        [JsonPropertyName("domain_id")] public int DomainId { get; set; }
 
-        [JsonPropertyName("username")] 
-        public string UserName { get; set; }
+        [JsonPropertyName("username")] public string UserName { get; set; }
 
-        [JsonPropertyName("password")] 
-        public string Password { get; set; }
+        [JsonPropertyName("password")] public string Password { get; set; }
 
         public StringContent ToJsonContent()
         {

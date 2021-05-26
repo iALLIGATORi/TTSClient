@@ -4,8 +4,6 @@ namespace CloudTTS
 {
     public class Auth
     {
-        [JsonPropertyName("session_id")] 
-        public string SessionId { get; set; }
-
+        [JsonPropertyName("session_id")] public string SessionId { get; set; }
     }
 }

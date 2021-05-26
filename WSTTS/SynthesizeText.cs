@@ -8,16 +8,15 @@ namespace CloudTTS
         {
             Mime = "text/plain";
         }
+
         public SynthesizeText(string value)
         {
             Mime = "text/plain";
             Value = value;
         }
 
-        [JsonPropertyName("mime")] 
-        public string Mime { get; set; }
+        [JsonPropertyName("mime")] public string Mime { get; set; }
 
-        [JsonPropertyName("value")] 
-        public string Value { get; set; }
+        [JsonPropertyName("value")] public string Value { get; set; }
     }
 }

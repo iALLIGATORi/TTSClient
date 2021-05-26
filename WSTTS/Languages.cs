@@ -11,11 +11,9 @@ namespace CloudTTS
 {
     public class Languages
     {
-        [JsonPropertyName("id")] 
-        public string Id { get; set; }
+        [JsonPropertyName("id")] public string Id { get; set; }
 
-        [JsonPropertyName("name")] 
-        public string Name { get; set; }
+        [JsonPropertyName("name")] public string Name { get; set; }
 
         public static async Task<Languages> Request(Task<string> sessionId)
         {
