@@ -4,11 +4,6 @@ namespace CloudTTS
 {
     public class SynthesizeText
     {
-        public SynthesizeText()
-        {
-            Mime = "text/plain";
-        }
-
         public SynthesizeText(string value)
         {
             Mime = "text/plain";

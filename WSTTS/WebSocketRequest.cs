@@ -20,10 +20,5 @@ namespace CloudTTS
 
         [JsonPropertyName("audio")] public string Audio { get; set; }
 
-        public StringContent ToJsonContent()
-        {
-            var json = JsonSerializer.Serialize(this);
-            return new StringContent(json, Encoding.UTF8, "application/json");
-        }
     }
 }
