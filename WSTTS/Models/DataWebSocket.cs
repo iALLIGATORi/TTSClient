@@ -5,18 +5,18 @@ using System.Text.Json.Serialization;
 
 namespace CloudTTS
 {
-    public class PackageRequest
+    internal class DataWebSocket
     {
-        public PackageRequest(string voiceName, SynthesizeText text)
+        public DataWebSocket(string voicename, WebSocketTextParam text)
         {
-            VoiceName = voiceName;
+            VoiceName = voicename;
             Text = text;
             Audio = "audio/wav";
         }
 
         [JsonPropertyName("voice_name")] public string VoiceName { get; set; }
 
-        [JsonPropertyName("text")] public SynthesizeText Text { get; set; }
+        [JsonPropertyName("text")] public WebSocketTextParam Text { get; set; }
 
         [JsonPropertyName("audio")] public string Audio { get; set; }
 

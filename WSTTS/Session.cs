@@ -10,18 +10,19 @@ namespace CloudTTS
     {
         public static async Task<string> Create(Credentials credentials)
         {
+            //var client = HttpClientFactory.Create();
             var requestUri = "https://cp.speechpro.com/vksession/rest/session";
             var credentialsContent = JsonContent.ToJsonContent(credentials);
             try
             {
-                var createSession = await HttpClientFactory.Post(requestUri, credentialsContent);
-                var sessionIdString = await createSession.Content.ReadAsStringAsync();
-                var sessionId = JsonSerializer.Deserialize<Auth>(sessionIdString);
+                var createSession = await HttpRequest.Post(requestUri, credentialsContent);
+                var session = await createSession.Content.ReadAsStringAsync();
+                var sessionId = JsonSerializer.Deserialize<Auth>(session);
                 if (sessionId?.SessionId == null)
                 {
                     throw new ArgumentNullException();
                 }
-
+                //createSession.Dispose();
                 return sessionId.SessionId;
             }
             catch (Exception e)
@@ -34,7 +35,7 @@ namespace CloudTTS
         public static async Task<bool> Status(Task<string> sessionId)
         {
             var requestUri = "https://cloud.speechpro.com/vksession/rest/session";
-            var statusString = await HttpClientFactory.Get(requestUri);
+            var statusString = await HttpRequest.Get(requestUri);
             var status = JsonSerializer.Deserialize<SessionStatus>(statusString);
             if (status.Active == false)
             {

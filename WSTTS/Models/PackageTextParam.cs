@@ -2,9 +2,9 @@
 
 namespace CloudTTS
 {
-    public class SynthesizeText
+    public class PackageTextParam
     {
-        public SynthesizeText(string value)
+        public PackageTextParam(string value)
         {
             Mime = "text/plain";
             Value = value;

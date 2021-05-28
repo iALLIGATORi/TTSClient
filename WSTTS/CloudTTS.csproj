@@ -154,31 +154,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonContent.cs" />
+    <Compile Include="ConsoleInput.cs" />
+    <Compile Include="HttpRequest.cs" />
+    <Compile Include="Models\JsonContent.cs" />
     <Compile Include="LanguagesRequest.cs" />
-    <Compile Include="SaveFile.cs" />
+    <Compile Include="FileSaver.cs" />
     <Compile Include="HttpClientFactory.cs" />
-    <Compile Include="Auth.cs" />
-    <Compile Include="Languages.cs" />
-    <Compile Include="SelectionMode.cs" />
+    <Compile Include="Models\Auth.cs" />
+    <Compile Include="Models\Languages.cs" />
+    <Compile Include="Selection.cs" />
     <Compile Include="Session.cs" />
-    <Compile Include="Credentials.cs" />
+    <Compile Include="Models\Credentials.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionStatus.cs" />
-    <Compile Include="Sound.cs" />
+    <Compile Include="Models\SessionStatus.cs" />
+    <Compile Include="Models\Sound.cs" />
     <Compile Include="Synthesis.cs" />
-    <Compile Include="PackageRequest.cs" />
-    <Compile Include="SynthesizeText.cs" />
+    <Compile Include="Models\DataPackage.cs" />
+    <Compile Include="Models\PackageTextParam.cs" />
     <Compile Include="VoicesRequest.cs" />
-    <Compile Include="WebsocketUrl.cs" />
-    <Compile Include="Voices.cs" />
-    <Compile Include="WebSocketRequest.cs" />
-    <Compile Include="WebSocketTextParam.cs" />
+    <Compile Include="Models\WebsocketUrl.cs" />
+    <Compile Include="Models\Voices.cs" />
+    <Compile Include="Models\DataWebSocket.cs" />
+    <Compile Include="Models\WebSocketTextParam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

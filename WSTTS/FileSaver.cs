@@ -4,7 +4,7 @@ using NAudio.Wave;
 
 namespace CloudTTS
 {
-    internal class SaveFile
+    internal class FileSaver
     {
         private static readonly string Path = @"C:\Cloud\";
 

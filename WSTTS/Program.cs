@@ -16,7 +16,7 @@ namespace CloudTTS
 
             var languageRequest = await LanguagesRequest.Request(createSession);
             var voicesRequest = await VoicesRequest.Request(createSession, languageRequest);
-            await SelectionMode.Select(createSession, voicesRequest);
+            await Selection.SelectMode(createSession, voicesRequest);
 
             Console.WriteLine("Нажмите любую клавишу для завершения");
             Console.ReadLine();

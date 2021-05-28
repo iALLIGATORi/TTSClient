@@ -10,15 +10,15 @@ namespace CloudTTS
 {
     internal class Synthesis
     {
-        public static async Task Packadge(string sessionId, Voices voiceRequest, string text)
+        public static async Task Package(string sessionId, Voices voiceRequest, string text)
         {
             var requestUri = "https://cp.speechpro.com/vktts/rest/v1/synthesize";
-            var synthesizeText = new SynthesizeText(text);
+            var synthesizeText = new PackageTextParam(text);
             try
             {
-                var synthesizeContent = JsonContent.ToJsonContent(new PackageRequest(voiceRequest.Name, synthesizeText));
+                var synthesizeContent = JsonContent.ToJsonContent(new DataPackage(voiceRequest.Name, synthesizeText));
 
-                var synthesizeResponse = await HttpClientFactory.Post(requestUri, synthesizeContent);
+                var synthesizeResponse = await HttpRequest.Post(requestUri, synthesizeContent);
 
                 var base64String = await synthesizeResponse.Content.ReadAsStringAsync();
                 var base64 = JsonSerializer.Deserialize<Sound>(base64String);
@@ -29,7 +29,7 @@ namespace CloudTTS
 
                 var sound = Convert.FromBase64String(base64.Data);
 
-                SaveFile.Save(sound);
+                FileSaver.Save(sound);
             }
             catch (Exception e)
             {
@@ -51,8 +51,8 @@ namespace CloudTTS
 
 
             var synthesizeWebText = new WebSocketTextParam();
-            var synthesizeWebContent = JsonContent.ToJsonContent(new WebSocketRequest(voice.Name, synthesizeWebText));
-            var synthesizeWebResponse = await HttpClientFactory.Post(requestUri, synthesizeWebContent);
+            var synthesizeWebContent = JsonContent.ToJsonContent(new DataWebSocket(voice.Name, synthesizeWebText));
+            var synthesizeWebResponse = await HttpRequest.Post(requestUri, synthesizeWebContent);
 
             var urlString = synthesizeWebResponse.Content.ReadAsStringAsync().Result;
             var url = JsonSerializer.Deserialize<WebsocketUrl>(urlString);
@@ -84,7 +84,7 @@ namespace CloudTTS
                     }
 
                     ms.Seek(0, SeekOrigin.Begin);
-                    SaveFile.Save(ms, sampleRate);
+                    FileSaver.Save(ms, sampleRate);
                 }
 
                 Console.WriteLine("Синтез завершен");
