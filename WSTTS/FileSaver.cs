@@ -10,7 +10,6 @@ namespace CloudTTS
 
         private static DirectoryInfo DirectoryCreate()
         {
-            Console.WriteLine("Создаем файл");
             var dirPath = new DirectoryInfo(Path);
             if (!dirPath.Exists)
             {
@@ -20,7 +19,7 @@ namespace CloudTTS
             return dirPath;
         }
 
-        public static void Save(byte[] sound)
+        internal static void Save(byte[] sound)
         {
             var dir = DirectoryCreate();
             var wavName = "packadge.wav";
@@ -29,7 +28,7 @@ namespace CloudTTS
                               " байт сохранен в папке " + dir);
         }
 
-        public static void Save(MemoryStream ms, int sampleRate)
+        internal static void Save(MemoryStream ms, int sampleRate)
         {
             var dir = DirectoryCreate();
             var wavName = "websocket.wav";

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CloudTTS
 {
-    class HttpRequest
+    internal class HttpRequest
     {
         public static Task<HttpResponseMessage> Post(string requestUri, HttpContent content)
         {
@@ -15,7 +11,7 @@ namespace CloudTTS
             return client.PostAsync(requestUri, content);
         }
 
-        public static Task<string> Get(string requestUri)
+        internal static Task<string> Get(string requestUri)
         {
             var client = HttpClientFactory.Client;
             return client.GetStringAsync(requestUri);

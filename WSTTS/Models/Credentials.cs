@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace CloudTTS
 {
@@ -19,6 +16,5 @@ namespace CloudTTS
         [JsonPropertyName("username")] public string UserName { get; set; }
 
         [JsonPropertyName("password")] public string Password { get; set; }
-
     }
 }

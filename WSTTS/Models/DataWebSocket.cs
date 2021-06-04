@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace CloudTTS
 {
@@ -19,6 +16,5 @@ namespace CloudTTS
         [JsonPropertyName("text")] public WebSocketTextParam Text { get; set; }
 
         [JsonPropertyName("audio")] public string Audio { get; set; }
-
     }
 }

@@ -154,7 +154,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleInput.cs" />
+    <Compile Include="SoundConverter.cs" />
+    <Compile Include="TextReader.cs" />
     <Compile Include="HttpRequest.cs" />
     <Compile Include="Models\JsonContent.cs" />
     <Compile Include="LanguagesRequest.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Models\Voices.cs" />
     <Compile Include="Models\DataWebSocket.cs" />
     <Compile Include="Models\WebSocketTextParam.cs" />
+    <Compile Include="WebSocketClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

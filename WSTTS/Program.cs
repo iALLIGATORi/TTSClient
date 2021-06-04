@@ -7,18 +7,25 @@ namespace CloudTTS
     {
         public static async Task Main(string[] args)
         {
-            var credentials = new Credentials(1623, "sorokin-s@speechpro.com", "x9q1yRqB&X");
-            var createSession = await Session.Create(credentials);
+            try
+            {
+                var credentials = new Credentials(1623, "sorokin-s@speechpro.com", "x9q1yRqB&X");
+                var createSession = await Session.Create(credentials);
+                var languageRequest = await LanguagesRequest.Request(createSession);
+                Console.WriteLine(createSession);
+                var voicesRequest = await VoicesRequest.Request(createSession, languageRequest);
+                var keyMode = Selection.SelectMode();
+                var keyMethod = Selection.SelectMethodInput();
+                var text = TextReader.Reading(keyMethod, keyMode);
+                await Synthesis.Synthesizing(createSession, voicesRequest, keyMode, text);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
-            //Проверка статуса сессии
-            //var statusSession = Session.Status(createSession);
-            //statusSession.Wait();
-
-            var languageRequest = await LanguagesRequest.Request(createSession);
-            var voicesRequest = await VoicesRequest.Request(createSession, languageRequest);
-            await Selection.SelectMode(createSession, voicesRequest);
-
-            Console.WriteLine("Нажмите любую клавишу для завершения");
+            Console.WriteLine("\nНажмите любую клавишу для завершения");
             Console.ReadLine();
         }
     }

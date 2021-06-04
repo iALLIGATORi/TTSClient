@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CloudTTS
 {
@@ -22,7 +20,6 @@ namespace CloudTTS
                 var key = Console.ReadLine();
                 if (int.TryParse(key, out var number) & (number >= 0) & (number <= languages.Count() - 1))
                 {
-                    //Console.WriteLine(languages.ElementAt(number).Name);
                     return languages.ElementAt(number);
                 }
 
@@ -47,46 +44,50 @@ namespace CloudTTS
                 var key = Console.ReadLine();
                 if (int.TryParse(key, out var number) & (number >= 0) & (number <= voices.Count() - 1))
                 {
-                    //Console.WriteLine(voices.ElementAt(number).Name);
                     return voices.ElementAt(number);
                 }
 
                 Console.WriteLine("Введен неверный номер");
             }
         }
-        public static async Task SelectMode(string session, Voices voice)
+
+        public static int SelectMode()
         {
-            Console.WriteLine("\nВыберите режим синтеза:\n1 - Пакетный режим;\n2 - Потоковый режим.");
+            Console.WriteLine(
+                "\nДоступные режимы синтеза:\n1 - Пакетный режим;\n2 - Потоковый режим.\n\nВыберите режим:");
             while (true)
             {
                 var consoleKey = Console.ReadLine();
-                int.TryParse(consoleKey, out var key);
-                if (key == 1)
+                int.TryParse(consoleKey, out var keyMode);
+                if (keyMode == 1)
                 {
-                    string text;
-                    while (true)
-                    {
-                        text = ConsoleInput.Input();
-                        if (text.Length < 500)
-                        {
-                            break;
-                        }
-
-                        Console.WriteLine("\nВведен текст длиной " + text.Length +
-                                          " символов. Этот режим имеет ограничение по длине обрабатываемого текста(до 500 символов).\n");
-                    }
-
-                    await Synthesis.Package(session, voice, text);
-
-                    break;
+                    return keyMode;
                 }
 
-                if (key == 2)
+                if (keyMode == 2)
                 {
-                    var text = ConsoleInput.Input();
-                    await Synthesis.Websocket(session, voice, text);
+                    return keyMode;
+                }
 
-                    break;
+                Console.WriteLine("Введен неверный номер. Повторите попытку");
+            }
+        }
+
+        public static int SelectMethodInput()
+        {
+            Console.WriteLine("\nДоступные способы ввода текста:\n1 - Консоль;\n2 - Файл.\n\nВыберите способ:");
+            while (true)
+            {
+                var consoleKey = Console.ReadLine();
+                int.TryParse(consoleKey, out var keyMethod);
+                if (keyMethod == 1)
+                {
+                    return keyMethod;
+                }
+
+                if (keyMethod == 2)
+                {
+                    return keyMethod;
                 }
 
                 Console.WriteLine("Введен неверный номер. Повторите попытку");

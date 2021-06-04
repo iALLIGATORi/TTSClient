@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -8,7 +6,7 @@ namespace CloudTTS
 {
     internal class VoicesRequest
     {
-        public static async Task<Voices> Request(string sessionId, Languages language)
+        internal static async Task<Voices> Request(string sessionId, Languages language)
         {
             var requestUri = "https://cloud.speechpro.com/vktts/rest/v1/languages/";
             var voicesString = await HttpRequest.Get(requestUri + language.Name + "/voices");

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CloudTTS
@@ -10,7 +8,6 @@ namespace CloudTTS
     {
         public static async Task<string> Create(Credentials credentials)
         {
-            //var client = HttpClientFactory.Create();
             var requestUri = "https://cp.speechpro.com/vksession/rest/session";
             var credentialsContent = JsonContent.ToJsonContent(credentials);
             try
@@ -22,6 +19,7 @@ namespace CloudTTS
                 {
                     throw new ArgumentNullException();
                 }
+
                 //createSession.Dispose();
                 return sessionId.SessionId;
             }
@@ -32,6 +30,7 @@ namespace CloudTTS
             }
         }
 
+        // TODO: проверка статуса сессии
         public static async Task<bool> Status(Task<string> sessionId)
         {
             var requestUri = "https://cloud.speechpro.com/vksession/rest/session";
