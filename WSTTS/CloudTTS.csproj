@@ -154,10 +154,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRequest.cs" />
+    <Compile Include="SampleRate.cs" />
     <Compile Include="SoundConverter.cs" />
     <Compile Include="TextReader.cs" />
     <Compile Include="HttpRequest.cs" />
-    <Compile Include="Models\JsonContent.cs" />
+    <Compile Include="Content.cs" />
     <Compile Include="LanguagesRequest.cs" />
     <Compile Include="FileSaver.cs" />
     <Compile Include="HttpClientFactory.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="Synthesis.cs" />
     <Compile Include="Models\DataPackage.cs" />
     <Compile Include="Models\PackageTextParam.cs" />
+    <Compile Include="UrlConverter.cs" />
     <Compile Include="VoicesRequest.cs" />
     <Compile Include="Models\WebsocketUrl.cs" />
     <Compile Include="Models\Voices.cs" />

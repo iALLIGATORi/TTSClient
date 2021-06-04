@@ -9,7 +9,7 @@ namespace CloudTTS
         public static async Task<string> Create(Credentials credentials)
         {
             var requestUri = "https://cp.speechpro.com/vksession/rest/session";
-            var credentialsContent = JsonContent.ToJsonContent(credentials);
+            var credentialsContent = Content.ToJson(credentials);
             try
             {
                 var createSession = await HttpRequest.Post(requestUri, credentialsContent);

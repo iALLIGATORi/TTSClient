@@ -11,13 +11,13 @@ namespace CloudTTS
             {
                 var credentials = new Credentials(1623, "sorokin-s@speechpro.com", "x9q1yRqB&X");
                 var createSession = await Session.Create(credentials);
-                var languageRequest = await LanguagesRequest.Request(createSession);
+                var languageRequest = await LanguagesRequest.ToRequest(createSession);
                 Console.WriteLine(createSession);
-                var voicesRequest = await VoicesRequest.Request(createSession, languageRequest);
-                var keyMode = Selection.SelectMode();
-                var keyMethod = Selection.SelectMethodInput();
-                var text = TextReader.Reading(keyMethod, keyMode);
-                await Synthesis.Synthesizing(createSession, voicesRequest, keyMode, text);
+                var voicesRequest = await VoicesRequest.ToRequest(createSession, languageRequest);
+                var mode = Selection.SelectMode();
+                var method = Selection.SelectMethodInput();
+                var text = TextReader.Reading(method, mode);
+                await Synthesis.Synthesizing(createSession, voicesRequest, mode, text);
             }
             catch (Exception e)
             {
