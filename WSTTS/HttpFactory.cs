@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
 
-namespace CloudTTS
+namespace Cloud
 {
-    internal class HttpClientFactory : HttpClient
+    internal class HttpFactory : HttpClient
     {
         internal static readonly HttpClient Client = new HttpClient();
 

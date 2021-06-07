@@ -2,9 +2,9 @@
 using System.Text;
 using System.Text.Json;
 
-namespace CloudTTS
+namespace Cloud
 {
-    internal class Content
+    internal class JsonContent
     {
         public static StringContent ToJson(object obj)
         {

@@ -1,4 +1,4 @@
-﻿namespace CloudTTS
+﻿namespace Cloud
 {
     internal class SampleRate
     {

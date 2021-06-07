@@ -2,14 +2,15 @@
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace CloudTTS
+namespace Cloud
 {
-    internal class VoicesRequest
+    internal class VoiceController
     {
+        private static readonly string RequestUrl = "https://cloud.speechpro.com/vktts/rest/v1/languages/";
+
         internal static async Task<Voices> ToRequest(string sessionId, Languages language)
         {
-            var requestUri = "https://cloud.speechpro.com/vktts/rest/v1/languages/";
-            var voicesString = await HttpRequest.Get(requestUri + language.Name + "/voices");
+            var voicesString = await HttpController.Get(RequestUrl + language.Name + "/voices");
             var voices = JsonSerializer.Deserialize<Voices[]>(voicesString).OrderBy(voice => voice.Name);
             return Selection.SelectVoice(voices);
         }

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class TextReader
     {
@@ -94,7 +94,7 @@ namespace CloudTTS
                 text += new string(buffer, 0, result);
             }
 
-            Console.WriteLine(text.Length);
+            //Console.WriteLine(text.Length);
             return text;
         }
     }

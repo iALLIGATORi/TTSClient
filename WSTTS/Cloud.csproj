@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D20BDDE2-B9CB-40B7-8D62-CAC7D140624B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CloudTTS</RootNamespace>
-    <AssemblyName>CloudTTS</AssemblyName>
+    <RootNamespace>Cloud</RootNamespace>
+    <AssemblyName>Cloud</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,8 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CloudTTS.Program</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -154,15 +155,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataRequest.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Disconnection.cs" />
     <Compile Include="SampleRate.cs" />
     <Compile Include="SoundConverter.cs" />
     <Compile Include="TextReader.cs" />
-    <Compile Include="HttpRequest.cs" />
-    <Compile Include="Content.cs" />
-    <Compile Include="LanguagesRequest.cs" />
+    <Compile Include="Controllers\HttpController.cs" />
+    <Compile Include="JsonContent.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="FileSaver.cs" />
-    <Compile Include="HttpClientFactory.cs" />
+    <Compile Include="HttpFactory.cs" />
     <Compile Include="Models\Auth.cs" />
     <Compile Include="Models\Languages.cs" />
     <Compile Include="Selection.cs" />
@@ -176,12 +178,12 @@
     <Compile Include="Models\DataPackage.cs" />
     <Compile Include="Models\PackageTextParam.cs" />
     <Compile Include="UrlConverter.cs" />
-    <Compile Include="VoicesRequest.cs" />
+    <Compile Include="Controllers\VoiceController.cs" />
     <Compile Include="Models\WebsocketUrl.cs" />
     <Compile Include="Models\Voices.cs" />
     <Compile Include="Models\DataWebSocket.cs" />
     <Compile Include="Models\WebSocketTextParam.cs" />
-    <Compile Include="WebSocketClient.cs" />
+    <Compile Include="Controllers\WebSocketController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

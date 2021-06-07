@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudTTS", "WSTTS\CloudTTS.csproj", "{D20BDDE2-B9CB-40B7-8D62-CAC7D140624B}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TTSClient", "TTSClient\TTSClient.vdproj", "{123E248B-4983-44B6-9A16-D5E41DFD21A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud", "WSTTS\Cloud.csproj", "{D20BDDE2-B9CB-40B7-8D62-CAC7D140624B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +15,6 @@ Global
 		{D20BDDE2-B9CB-40B7-8D62-CAC7D140624B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D20BDDE2-B9CB-40B7-8D62-CAC7D140624B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D20BDDE2-B9CB-40B7-8D62-CAC7D140624B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{123E248B-4983-44B6-9A16-D5E41DFD21A4}.Debug|Any CPU.ActiveCfg = Debug
-		{123E248B-4983-44B6-9A16-D5E41DFD21A4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

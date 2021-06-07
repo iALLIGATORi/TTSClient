@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class UrlConverter
     {
@@ -10,7 +10,8 @@ namespace CloudTTS
             var url = JsonSerializer.Deserialize<WebsocketUrl>(urlJson);
             if (url == null)
             {
-                Console.WriteLine("Нет звуковых данных");
+
+                throw new ArgumentNullException("Нет звуковых данных");
             }
 
             var uri = new Uri(url.Url);

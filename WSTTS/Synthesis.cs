@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class Synthesis
     {
@@ -19,35 +19,34 @@ namespace CloudTTS
             }
         }
 
-        internal static async Task SynthesizingPackage(string sessionId, Voices voice, string text)
+        protected static async Task SynthesizingPackage(string sessionId, Voices voice, string text)
         {
             _requestUri = "https://cp.speechpro.com/vktts/rest/v1/synthesize";
 
-            var packageContent = Content.ToJson(DataRequest.ToRequest(voice, text));
-            var packageResponse = await HttpRequest.Post(_requestUri, packageContent);
+            var packageContent = JsonContent.ToJson(RequestController.RequestPackage(voice, text));
+            var packageResponse = await HttpController.Post(_requestUri, packageContent);
             var base64 = await packageResponse.Content.ReadAsStringAsync();
             var sound = SoundConverter.Base64ToSound(base64);
             FileSaver.Save(sound);
         }
 
 
-        internal static async Task SynthesizingWebsocket(string sessionId, Voices voice, string text)
+        protected static async Task SynthesizingWebsocket(string sessionId, Voices voice, string text)
         {
             _requestUri = "https://cp.speechpro.com/vktts/rest/v1/synthesize/stream";
             var sampleRate = SampleRate.SamplingRate(voice);
-            var webContent = Content.ToJson(DataRequest.ToRequest(voice));
-            var webResponse = await HttpRequest.Post(_requestUri, webContent);
-
+            var webContent = JsonContent.ToJson(RequestController.RequestWebsocket(voice));
+            var webResponse = await HttpController.Post(_requestUri, webContent);
             var urlJson = webResponse.Content.ReadAsStringAsync().Result;
             var uri = UrlConverter.ConvertingToUri(urlJson);
-            await WebSocketClient.Connect(uri);
+            await WebSocketController.Connect(uri);
 
             // TODO: сделать проверку статуса вебсокета и исключений
             //while (apiWebsocketClient.State == WebSocketState.Open)
 
             var messageByte = Encoding.UTF8.GetBytes(text);
-            await WebSocketClient.Send(messageByte);
-            await WebSocketClient.Receive(sampleRate);
+            await WebSocketController.Send(messageByte);
+            await WebSocketController.Receive(sampleRate);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class SoundConverter
     {

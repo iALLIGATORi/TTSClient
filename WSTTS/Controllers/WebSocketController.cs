@@ -4,17 +4,20 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CloudTTS
+namespace Cloud
 {
-    internal class WebSocketClient
+    internal class WebSocketController
     {
         internal static readonly ClientWebSocket WebClient = new ClientWebSocket();
 
         internal static async Task Connect(Uri uri)
         {
             await WebClient.ConnectAsync(uri, CancellationToken.None);
-            //Для теста
-            Console.WriteLine(uri);
+        }
+
+        internal static async Task Disconnect()
+        {
+            await WebClient.CloseAsync(WebSocketCloseStatus.NormalClosure, null!, CancellationToken.None);
         }
 
         internal static async Task Send(byte[] messageByte)

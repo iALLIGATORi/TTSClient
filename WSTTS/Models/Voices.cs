@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CloudTTS
+namespace Cloud
 {
     public class Voices
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class Selection
     {
@@ -30,7 +30,7 @@ namespace CloudTTS
         public static Voices SelectVoice(IOrderedEnumerable<Voices> voices)
         {
             Console.WriteLine("\nСписок доступных голосов для синтеза");
-            var voiceNumber = 0;
+            var voiceNumber = 1;
             foreach (var voice in voices)
             {
                 Console.WriteLine(voiceNumber + " - " + voice.Name);

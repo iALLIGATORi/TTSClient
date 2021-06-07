@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class Program
     {
@@ -11,9 +11,8 @@ namespace CloudTTS
             {
                 var credentials = new Credentials(1623, "sorokin-s@speechpro.com", "x9q1yRqB&X");
                 var createSession = await Session.Create(credentials);
-                var languageRequest = await LanguagesRequest.ToRequest(createSession);
-                Console.WriteLine(createSession);
-                var voicesRequest = await VoicesRequest.ToRequest(createSession, languageRequest);
+                var languageRequest = await LanguageController.ToRequest(createSession);
+                var voicesRequest = await VoiceController.ToRequest(createSession, languageRequest);
                 var mode = Selection.SelectMode();
                 var method = Selection.SelectMethodInput();
                 var text = TextReader.Reading(method, mode);
@@ -23,6 +22,10 @@ namespace CloudTTS
             {
                 Console.WriteLine(e);
                 throw;
+            }
+            finally
+            {
+                await Disconnection.Disconnect();
             }
 
             Console.WriteLine("\nНажмите любую клавишу для завершения");

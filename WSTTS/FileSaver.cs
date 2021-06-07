@@ -2,7 +2,7 @@
 using System.IO;
 using NAudio.Wave;
 
-namespace CloudTTS
+namespace Cloud
 {
     internal class FileSaver
     {
