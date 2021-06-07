@@ -19,7 +19,7 @@ namespace Cloud
             }
         }
 
-        internal async Task SynthesizingPackage(string sessionId, Voices voice, string text)
+        private async Task SynthesizingPackage(string sessionId, Voices voice, string text)
         {
             _requestUri = "https://cp.speechpro.com/vktts/rest/v1/synthesize";
 
@@ -31,7 +31,7 @@ namespace Cloud
         }
 
 
-        internal async Task SynthesizingWebsocket(string sessionId, Voices voice, string text)
+        private async Task SynthesizingWebsocket(string sessionId, Voices voice, string text)
         {
             _requestUri = "https://cp.speechpro.com/vktts/rest/v1/synthesize/stream";
             var sampleRate = new SampleRate().SamplingRate(voice);

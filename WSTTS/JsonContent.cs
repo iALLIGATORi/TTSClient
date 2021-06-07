@@ -6,7 +6,7 @@ namespace Cloud
 {
     internal class JsonContent
     {
-        public StringContent ToJson(object obj)
+        internal StringContent ToJson(object obj)
         {
             var json = JsonSerializer.Serialize(obj);
             var content = new StringContent(json, Encoding.UTF8, "application/json");

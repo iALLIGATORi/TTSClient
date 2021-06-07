@@ -18,7 +18,7 @@ namespace Cloud
             return fileText;
         }
 
-        internal string ReadingIsConsole(int keyMode)
+        private string ReadingIsConsole(int keyMode)
         {
             Console.WriteLine("\nВведите текст для синтеза");
             var bufferSize = 502;
@@ -43,7 +43,7 @@ namespace Cloud
             }
         }
 
-        internal async Task<string> ReadingIsFile(int keyMode)
+        private async Task<string> ReadingIsFile(int keyMode)
         {
             Console.WriteLine("\nВведите полный путь до файла");
             FileInfo file;
