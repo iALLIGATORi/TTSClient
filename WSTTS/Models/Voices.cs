@@ -2,7 +2,7 @@
 
 namespace Cloud
 {
-    public class Voices
+    internal class Voices
     {
         [JsonPropertyName("id")] public string Id { get; set; }
 

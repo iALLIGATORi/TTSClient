@@ -4,7 +4,7 @@ namespace Cloud
 {
     internal class Credentials
     {
-        public Credentials(int domainId, string username, string password)
+        internal Credentials(int domainId, string username, string password)
         {
             DomainId = domainId;
             UserName = username;

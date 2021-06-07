@@ -6,9 +6,9 @@ namespace Cloud
 {
     internal class FileSaver
     {
-        private static readonly string Path = @"C:\Cloud\";
+        private readonly string Path = @"C:\Cloud\";
 
-        private static DirectoryInfo DirectoryCreate()
+        private DirectoryInfo DirectoryCreate()
         {
             var dirPath = new DirectoryInfo(Path);
             if (!dirPath.Exists)
@@ -19,7 +19,7 @@ namespace Cloud
             return dirPath;
         }
 
-        internal static void Save(byte[] sound)
+        internal void Save(byte[] sound)
         {
             var dir = DirectoryCreate();
             var wavName = "packadge.wav";
@@ -28,7 +28,7 @@ namespace Cloud
                               " байт сохранен в папке " + dir);
         }
 
-        internal static void Save(MemoryStream ms, int sampleRate)
+        internal void Save(MemoryStream ms, int sampleRate)
         {
             var dir = DirectoryCreate();
             var wavName = "websocket.wav";

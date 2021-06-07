@@ -2,9 +2,9 @@
 
 namespace Cloud
 {
-    public class DataPackage
+    internal class DataPackage
     {
-        public DataPackage(string voiceName, PackageTextParam text)
+        internal DataPackage(string voiceName, PackageTextParam text)
         {
             VoiceName = voiceName;
             Text = text;

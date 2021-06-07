@@ -2,7 +2,7 @@
 
 namespace Cloud
 {
-    public class Auth
+    internal class Auth
     {
         [JsonPropertyName("session_id")] public string SessionId { get; set; }
     }

@@ -2,7 +2,7 @@
 
 namespace Cloud
 {
-    public class Languages
+    internal class Languages
     {
         [JsonPropertyName("id")] public string Id { get; set; }
 

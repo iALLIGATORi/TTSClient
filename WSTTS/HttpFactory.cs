@@ -2,11 +2,11 @@
 
 namespace Cloud
 {
-    internal class HttpFactory : HttpClient
+    internal class HttpFactory
     {
-        internal static readonly HttpClient Client = new HttpClient();
+        internal readonly HttpClient Client = new HttpClient();
 
-        internal static void Create(string sessionId)
+        internal void Create(string sessionId)
         {
             Client.DefaultRequestHeaders.Add("X-Session-Id", sessionId);
         }

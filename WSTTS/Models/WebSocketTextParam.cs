@@ -2,9 +2,9 @@
 
 namespace Cloud
 {
-    public class WebSocketTextParam
+    internal class WebSocketTextParam
     {
-        public WebSocketTextParam()
+        internal WebSocketTextParam()
         {
             Mime = "text/plain";
         }

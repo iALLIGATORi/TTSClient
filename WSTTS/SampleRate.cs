@@ -2,7 +2,7 @@
 {
     internal class SampleRate
     {
-        internal static int SamplingRate(Voices voice)
+        internal int SamplingRate(Voices voice)
         {
             var rate = "8000";
             var sampleRate = 22000;

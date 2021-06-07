@@ -6,7 +6,7 @@ namespace Cloud
 {
     internal class TextReader
     {
-        internal static string Reading(int keyMethod, int keyMode)
+        internal string Reading(int keyMethod, int keyMode)
         {
             if (keyMethod == 1)
             {
@@ -18,7 +18,7 @@ namespace Cloud
             return fileText;
         }
 
-        internal static string ReadingIsConsole(int keyMode)
+        internal string ReadingIsConsole(int keyMode)
         {
             Console.WriteLine("\nВведите текст для синтеза");
             var bufferSize = 502;
@@ -43,7 +43,7 @@ namespace Cloud
             }
         }
 
-        internal static async Task<string> ReadingIsFile(int keyMode)
+        internal async Task<string> ReadingIsFile(int keyMode)
         {
             Console.WriteLine("\nВведите полный путь до файла");
             FileInfo file;

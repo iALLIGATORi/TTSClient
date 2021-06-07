@@ -5,23 +5,20 @@ namespace Cloud
 {
     internal class HttpController
     {
-        internal static async Task<HttpResponseMessage> Post(string requestUri, HttpContent content)
+        internal async Task<HttpResponseMessage> Post(string requestUri, HttpContent content)
         {
-            var client = HttpFactory.Client;
-            return await client.PostAsync(requestUri, content);
+            return await new HttpFactory().Client.PostAsync(requestUri, content);
         }
 
-        internal static async Task<string> Get(string requestUri)
+        internal async Task<string> Get(string requestUri)
         {
-            var client = HttpFactory.Client;
-            return await client.GetStringAsync(requestUri);
+            return await new HttpFactory().Client.GetStringAsync(requestUri);
         }
 
-        internal static async Task Delete()
+        internal async Task Delete()
         {
             var requestUri = "https://cloud.speechpro.com/vktts/rest/session";
-            var client = HttpFactory.Client;
-            await client.DeleteAsync(requestUri);
+            await new HttpFactory().Client.DeleteAsync(requestUri);
         }
     }
 }

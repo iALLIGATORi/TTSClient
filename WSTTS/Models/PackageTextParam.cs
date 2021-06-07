@@ -2,9 +2,9 @@
 
 namespace Cloud
 {
-    public class PackageTextParam
+    internal class PackageTextParam
     {
-        public PackageTextParam(string value)
+        internal PackageTextParam(string value)
         {
             Mime = "text/plain";
             Value = value;

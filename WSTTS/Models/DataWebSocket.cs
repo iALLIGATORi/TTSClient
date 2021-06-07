@@ -4,7 +4,7 @@ namespace Cloud
 {
     internal class DataWebSocket
     {
-        public DataWebSocket(string voicename, WebSocketTextParam text)
+        internal DataWebSocket(string voicename, WebSocketTextParam text)
         {
             VoiceName = voicename;
             Text = text;

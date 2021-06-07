@@ -5,7 +5,7 @@ namespace Cloud
 {
     internal class Selection
     {
-        public static Languages SelectLanguage(IOrderedEnumerable<Languages> languages)
+        public Languages SelectLanguage(IOrderedEnumerable<Languages> languages)
         {
             Console.WriteLine("Список доступных языков");
 
@@ -27,7 +27,7 @@ namespace Cloud
             }
         }
 
-        public static Voices SelectVoice(IOrderedEnumerable<Voices> voices)
+        public Voices SelectVoice(IOrderedEnumerable<Voices> voices)
         {
             Console.WriteLine("\nСписок доступных голосов для синтеза");
             var voiceNumber = 1;
@@ -51,7 +51,7 @@ namespace Cloud
             }
         }
 
-        public static int SelectMode()
+        public int SelectMode()
         {
             Console.WriteLine(
                 "\nДоступные режимы синтеза:\n1 - Пакетный режим;\n2 - Потоковый режим.\n\nВыберите режим:");
@@ -73,7 +73,7 @@ namespace Cloud
             }
         }
 
-        public static int SelectMethodInput()
+        public int SelectMethodInput()
         {
             Console.WriteLine("\nДоступные способы ввода текста:\n1 - Консоль;\n2 - Файл.\n\nВыберите способ:");
             while (true)

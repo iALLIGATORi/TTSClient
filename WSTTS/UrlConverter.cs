@@ -5,12 +5,11 @@ namespace Cloud
 {
     internal class UrlConverter
     {
-        internal static Uri ConvertingToUri(string urlJson)
+        internal Uri ConvertingToUri(string urlJson)
         {
             var url = JsonSerializer.Deserialize<WebsocketUrl>(urlJson);
             if (url == null)
             {
-
                 throw new ArgumentNullException("Нет звуковых данных");
             }
 

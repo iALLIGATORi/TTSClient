@@ -5,14 +5,14 @@ namespace Cloud
 {
     internal class Disconnection
     {
-        internal static async Task Disconnect()
+        internal async Task Disconnect()
         {
-            if (WebSocketController.WebClient.State == WebSocketState.Open)
+            if (new WebSocketController().WebClient.State == WebSocketState.Open)
             {
-                await WebSocketController.Disconnect();
+                await new WebSocketController().Disconnect();
             }
-            
-            await HttpController.Delete();
+
+            await new HttpController().Delete();
         }
     }
 }
