@@ -39,14 +39,14 @@ namespace Cloud
             var webResponse = await new HttpController().Post(_requestUri, webContent);
             var urlJson = webResponse.Content.ReadAsStringAsync().Result;
             var uri = new UrlConverter().ConvertingToUri(urlJson);
-            await new WebSocketController().Connect(uri);
+            await WebSocketController.Connect(uri);
 
             // TODO: сделать проверку статуса вебсокета и исключений
             //while (apiWebsocketClient.State == WebSocketState.Open)
 
             var messageByte = Encoding.UTF8.GetBytes(text);
-            await new WebSocketController().Send(messageByte);
-            await new WebSocketController().Receive(sampleRate);
+            await WebSocketController.Send(messageByte);
+            await WebSocketController.Receive(sampleRate);
         }
     }
 }

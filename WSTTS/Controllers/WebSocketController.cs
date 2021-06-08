@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace Cloud
 {
-    internal class WebSocketController
+    internal static class WebSocketController
     {
-        internal readonly ClientWebSocket WebClient = new ClientWebSocket();
+        internal static readonly ClientWebSocket WebClient = new ClientWebSocket();
 
-        internal async Task Connect(Uri uri)
+        internal static  async Task Connect(Uri uri)
         {
             await WebClient.ConnectAsync(uri, CancellationToken.None);
         }
 
-        internal async Task Disconnect()
+        internal static async Task Disconnect()
         {
             await WebClient.CloseAsync(WebSocketCloseStatus.NormalClosure, null!, CancellationToken.None);
         }
 
-        internal async Task Send(byte[] messageByte)
+        internal static async Task Send(byte[] messageByte)
         {
             var bufferSend = new ArraySegment<byte>(messageByte);
             await WebClient.SendAsync(bufferSend, WebSocketMessageType.Text, true, CancellationToken.None);
         }
 
-        internal async Task Receive(int sampleRate)
+        internal static async Task Receive(int sampleRate)
         {
             var bufferReceive = new ArraySegment<byte>(new byte[8192]);
 

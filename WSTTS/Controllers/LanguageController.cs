@@ -10,7 +10,7 @@ namespace Cloud
 
         internal async Task<Languages> ToRequest(string sessionId)
         {
-            new HttpFactory().Create(sessionId);
+            HttpFactory.Create(sessionId);
             var request = await new HttpController().Get(RequestUri);
             var languages = JsonSerializer.Deserialize<Languages[]>(request).OrderBy(lang => lang.Id);
             return new Selection().SelectLanguage(languages);

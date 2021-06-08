@@ -7,9 +7,9 @@ namespace Cloud
     {
         internal async Task Disconnect()
         {
-            if (new WebSocketController().WebClient.State == WebSocketState.Open)
+            if ( WebSocketController.WebClient.State == WebSocketState.Open)
             {
-                await new WebSocketController().Disconnect();
+                await  WebSocketController.Disconnect();
             }
 
             await new HttpController().Delete();
