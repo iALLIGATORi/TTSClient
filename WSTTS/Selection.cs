@@ -30,7 +30,7 @@ namespace Cloud
         internal Voices SelectVoice(IOrderedEnumerable<Voices> voices)
         {
             Console.WriteLine("\nСписок доступных голосов для синтеза");
-            var voiceNumber = 1;
+            var voiceNumber = 0;
             foreach (var voice in voices)
             {
                 Console.WriteLine(voiceNumber + " - " + voice.Name);
