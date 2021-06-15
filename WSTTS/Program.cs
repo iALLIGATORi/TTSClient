@@ -9,8 +9,9 @@ namespace Cloud
         {
             try
             {
-                var credentials = new Credentials(1623, "sorokin-s@speechpro.com", "x9q1yRqB&X");
+                var credentials = new Credentials(123, "mail@company.com", "q1Rq");
                 var createSession = await new Session().Create(credentials);
+                //Console.WriteLine(createSession);
                 var languageRequest = await new LanguageController().ToRequest(createSession);
                 var voicesRequest = await VoiceController.ToRequest(createSession, languageRequest);
                 var mode = new Selection().SelectMode();
